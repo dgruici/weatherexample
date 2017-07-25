@@ -11,14 +11,14 @@ import com.google.auto.value.AutoValue;
  */
 
 @AutoValue
-abstract class WeatherViewState {
+public abstract class WeatherViewState {
 
-    abstract String temperature();
-    abstract String maxTemp();
-    abstract String minTemp();
-    abstract String weatherDescription();
+    public abstract String temperature();
+    public abstract String maxTemp();
+    public abstract String minTemp();
+    public abstract String weatherDescription();
 
-    static Builder builder() {
+    public static Builder builder() {
         return new AutoValue_WeatherViewState.Builder()
                 .setTemperature("0.0")
                 .setMaxTemp("0.0")
@@ -28,7 +28,7 @@ abstract class WeatherViewState {
     }
 
     @AutoValue.Builder
-    abstract static class Builder {
+    public abstract static class Builder {
         abstract Builder setTemperature(String temperature);
         abstract Builder setMaxTemp(String maxTemp);
         abstract Builder setMinTemp(String minTemp);

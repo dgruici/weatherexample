@@ -7,6 +7,7 @@ import com.pandect.weatherexample.weather.WeatherInteractorImpl;
 import com.pandect.weatherexample.weather.WeatherPresenter;
 import com.pandect.weatherexample.weather.WeatherPresenterImpl;
 import com.pandect.weatherexample.weather.WeatherView;
+import com.pandect.weatherexample.weather.WeatherViewState;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,9 +28,9 @@ import static org.mockito.Mockito.when;
 
 public class WeatherPresenterTest {
 
-    WeatherView view;
-    WeatherPresenter presenter;
-    WeatherInteractor interactor;
+    private WeatherView view;
+    private WeatherPresenter presenter;
+    private WeatherInteractor interactor;
 
     @Before
     public void setup() {
@@ -59,18 +60,21 @@ public class WeatherPresenterTest {
     }
     
     @Test
-    public void testOnLocationReceivedAndWeatherRequestSuccessful() {
-        doAnswer(new Answer() {
-            @Override
-            public Object answer(InvocationOnMock invocation) throws Throwable {
-                interactor.onRequestSuccess("");
-                return null;
-            }
-        }).when(interactor).makeRequest(any(WeatherTodayRequest.class));
+    public void testOnLocationReceivedAndWeatherRequestSuccessfulWithBadData() {
         when(view.isConnectedToData()).thenReturn(true);
-
-        presenter.onLocationReceived(0,0);
+        ((WeatherInteractor.ResponseCallback)presenter).onWeatherTodaySuccess(WeatherTodayResponseObject.builder().build());
         verify(view).showErrorDialog();
+    }
+
+    @Test
+    public void testOnLocationReceivedAndWeatherRequestSuccessfulWithGoodData() {
+        when(view.isConnectedToData()).thenReturn(true);
+        ((WeatherInteractor.ResponseCallback)presenter).onWeatherTodaySuccess(
+                WeatherTodayResponseObject.builder()
+                        .setLat(1)
+                        .setLng(1)
+                        .build());
+        verify(view).render(any(WeatherViewState.class));
     }
 
 
