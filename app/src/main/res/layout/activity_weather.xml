@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_view_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="0.0 C"
+        android:textSize="50sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/text_view_temp_min_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low:"
+        android:textSize="16sp"
+        android:layout_below="@+id/text_view_temperature"
+        android:layout_alignParentStart="true"
+        android:paddingStart="16dp"/>
+
+    <TextView
+        android:id="@+id/text_view_temp_min_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0"
+        android:textSize="16sp"
+        android:layout_below="@+id/text_view_temperature"
+        android:layout_toEndOf="@+id/text_view_temp_min_label"
+        android:paddingStart="16dp"/>
+
+    <TextView
+        android:id="@+id/text_view_temp_max_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High:"
+        android:textSize="16sp"
+        android:layout_below="@+id/text_view_temperature"
+        android:layout_toEndOf="@+id/text_view_temp_min_value"
+        android:paddingStart="16dp"/>
+
+    <TextView
+        android:id="@+id/text_view_temp_max_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0"
+        android:textSize="16sp"
+        android:layout_below="@+id/text_view_temperature"
+        android:layout_toEndOf="@+id/text_view_temp_max_label"
+        android:paddingStart="16dp"/>
+
+
+    <TextView
+        android:id="@+id/text_view_forecast_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forecast:"
+        android:textSize="16sp"
+        android:layout_below="@+id/text_view_temp_min_value"
+        android:paddingStart="16dp"/>
+
+    <TextView
+        android:id="@+id/text_view_forecast_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunny"
+        android:textSize="16sp"
+        android:layout_below="@+id/text_view_temp_min_value"
+        android:layout_toEndOf="@+id/text_view_forecast_label"
+        android:paddingStart="16dp"/>
+
+</RelativeLayout>
